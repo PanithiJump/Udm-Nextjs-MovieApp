@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
@@ -7,6 +8,20 @@ import MovieList from '../components/movieList'
 import Footer from '../components/footer'
 
 const Home = () => {
+
+  const [ count, setCount ] = useState(500) //กำหนดค่าเริ่มต้น
+  const increment = () =>{
+    const newCount = count + 1
+    setCount(newCount)
+  }
+  const decrement = () =>{
+      const newCount = count - 1
+      setCount(newCount)
+  }
+
+
+
+
   return (
     <div>
       <Head>
@@ -19,14 +34,20 @@ const Home = () => {
       <Navbar />
       <div className="home-page">
         <div className="container">
+          <button onClick={increment} className="btn btn-primary">+ Number</button>
+          <button onClick={decrement} className="btn btn-danger">- Number</button>
           <div className="row">
             <div className="col-lg-3">
-              <SideMenu />
+              <SideMenu 
+              appName={"Movie DB"}
+              clickHandler={() => {console.log("Hello JUMP")}}
+              count={count}
+              />
             </div>
             <div className="col-lg-9">
               <Carousel />
               <div className="row">
-                <MovieList />
+                <MovieList count={count}/>
               </div>
             </div>
           </div>
