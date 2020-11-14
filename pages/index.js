@@ -10,9 +10,11 @@ import Footer from '../components/footer'
 import { getMovies } from '../actions' //if file name 'index' don't need to provide file namee
 
 const Home = () => {
-
+  const [movies, setMovies] = useState([])
   //improve this, because now it's called everytime!
-  const movies = getMovies()
+  getMovies().then((movies) => {
+    setMovies(movies)
+  })
 
   return (
     <div>
