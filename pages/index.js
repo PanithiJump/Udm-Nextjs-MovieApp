@@ -78,12 +78,17 @@ class Home extends React.Component {
   // }
 
   componentDidMount() {
-    getMovies().then((movies) => {
-      this.setState({movies})
-    })
+    getMovies()
+      .then((movies) => {
+        this.setState({movies})
+      })
+      .catch((error) => {
+        this.setState({errorMessage: error})
+      })
   }
 
   render() {
+    const {movies, errorMessage} = this.state
     return (
       <div>
         <Head>
@@ -103,6 +108,11 @@ class Home extends React.Component {
               <div className="col-lg-9">
                 <Carousel />
                 <div className="row">
+                { errorMessage &&
+                    <div className="alert alert-danger" role="alert">
+                      { errorMessage }
+                    </div>
+                  }
                   <MovieList movies={this.state.movies} />
                 </div>
               </div>
