@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/navbar'
@@ -11,10 +11,15 @@ import { getMovies } from '../actions' //if file name 'index' don't need to prov
 
 const Home = () => {
   const [movies, setMovies] = useState([])
-  //improve this, because now it's called everytime!
-  getMovies().then((movies) => {
-    setMovies(movies)
-  })
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const fetchData = async () =>{
+      const resMovies = await getMovies()
+      setMovies(resMovies)
+    }
+    fetchData();
+  }, [count])
 
   return (
     <div>
@@ -28,6 +33,7 @@ const Home = () => {
       <Navbar />
       <div className="home-page">
         <div className="container">
+          <button onClick={() => setCount(count + 1)}>Click Me!</button>
           <div className="row">
             <div className="col-lg-3">
               <SideMenu appName={"Movie DB"} />
