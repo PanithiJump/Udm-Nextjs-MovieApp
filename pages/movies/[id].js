@@ -21,7 +21,7 @@ const Movie = (props) => {
             </p>
             <style jsx>{`
                 .desc-text {
-                    font-size: 14px
+                    font-size: 16px
                 }
             `}
             </style>
