@@ -1,6 +1,6 @@
 
 
-const Modal = () => {
+const Modal = (props) => {
 
     let closeButton = null
 
@@ -25,11 +25,13 @@ const Modal = () => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            ...
+                            {props.children}
                         </div>
                         <div className="modal-footer">
                             <button ref={ele => closeButton = ele} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" onClick={submitModal} className="btn btn-primary">Save changes</button>
+                            { props.hasSubmit &&
+                                <button onClick={submitModal} type="button" className="btn btn-primary">Save changes</button>
+                            }
                         </div>
                     </div>
                 </div>
