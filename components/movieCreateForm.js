@@ -6,8 +6,12 @@ const MovieCreateForm = (props) => {
 
   // fix uncontrolled data!
   const [form, setForm] = useState({
-    name: 'Some Movie',
-    description: 'Some Description'
+    name: '',
+    description: '',
+    rating: '',
+    image: '',
+    cover: '',
+    longDesc: ''
   })
 
   const handleChange = (event) => {
