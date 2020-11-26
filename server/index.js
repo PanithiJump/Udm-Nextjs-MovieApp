@@ -30,6 +30,7 @@ app.prepare().then(() => {
   server.post('/api/v1/movies', (req, res) => {
     const movie = req.body
     moviesData.push(movie)
+
     const pathToFile = path.join(__dirname, filePath)
     const stringifiedData = JSON.stringify(moviesData, null, 2)
 
@@ -40,11 +41,6 @@ app.prepare().then(() => {
 
       return res.json('Movie has been succesfuly added!')
     })
-  })
-
-  server.patch('/api/v1/movies/:id', (req, res) => {
-    const { id } = req.params
-    return res.json({message: `Updating post of id: ${id}`})
   })
 
   server.delete('/api/v1/movies/:id', (req, res) => {
@@ -62,7 +58,25 @@ app.prepare().then(() => {
 
       return res.json('Movie has been succesfuly added!')
     })
+  })
 
+  server.patch('/api/v1/movies/:id', (req, res) => {
+    const { id } = req.params
+    const movie = req.body
+    const movieIndex = moviesData.findIndex(m => m.id === id)
+
+    moviesData[movieIndex] = movie
+
+    const pathToFile = path.join(__dirname, filePath)
+    const stringifiedData = JSON.stringify(moviesData, null, 2)
+
+    fs.writeFile(pathToFile, stringifiedData, (err) => {
+      if (err) {
+        return res.status(422).send(err)
+      }
+
+      return res.json(movie)
+    })
   })
 
   // server.get('/faq', (req, res) => {
@@ -74,6 +88,7 @@ app.prepare().then(() => {
   //     </html>
   //   `)
   // })
+
   // we are handling all of the request comming to our server
   server.get('*', (req, res) => {
     // next.js is handling requests and providing pages where we are navigating to
