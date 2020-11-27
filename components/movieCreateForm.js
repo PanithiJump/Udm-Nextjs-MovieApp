@@ -60,7 +60,7 @@ const MovieCreateform = (props) => {
   return (
     <form>
       <div className="form-group">
-        <label HtmlFor="name">Name</label>
+        <label htmlFor="name">Name</label>
         <input
           onChange={handleChange}
           value={form.name}
@@ -72,7 +72,7 @@ const MovieCreateform = (props) => {
           placeholder="Lord of the Rings" />
       </div>
       <div className="form-group">
-        <label HtmlFor="description">Description</label>
+        <label htmlFor="description">Description</label>
         <input
           onChange={handleChange}
           value={form.description}
@@ -83,7 +83,7 @@ const MovieCreateform = (props) => {
           placeholder="Somewhere in Middle-earth..." />
       </div>
       <div className="form-group">
-        <label HtmlFor="description">Rating</label>
+        <label htmlFor="description">Rating</label>
         <input
           onChange={handleChange}
           value={form.rating}
@@ -97,7 +97,7 @@ const MovieCreateform = (props) => {
         <small id="emailHelp" className="form-text text-muted">Max: 5, Min: 0 </small>
       </div>
       <div className="form-group">
-        <label HtmlFor="image">Image</label>
+        <label htmlFor="image">Image</label>
         <input
           onChange={handleChange}
           value={form.image}
@@ -108,7 +108,7 @@ const MovieCreateform = (props) => {
           placeholder="http://....." />
       </div>
       <div className="form-group">
-        <label HtmlFor="cover">Cover</label>
+        <label htmlFor="cover">Cover</label>
         <input
           onChange={handleChange}
           value={form.cover}
@@ -119,7 +119,7 @@ const MovieCreateform = (props) => {
           placeholder="http://......" />
       </div>
       <div className="form-group">
-        <label HtmlFor="longDesc">Long Description</label>
+        <label htmlFor="longDesc">Long Description</label>
         <textarea
           onChange={handleChange}
           value={form.longDesc}
@@ -129,7 +129,7 @@ const MovieCreateform = (props) => {
           rows="3"></textarea>
       </div>
       <div className="form-group">
-        <label HtmlFor="genre">Genre</label>
+        <label htmlFor="genre">Genre</label>
         <select
           onChange={handleGenreChange}
           multiple
